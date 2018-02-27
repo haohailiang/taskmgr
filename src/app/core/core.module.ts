@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { MdIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+// import { SharedModule } from './../shared/shared.module';
 import { 
   MdToolbarModule,
   MdIconModule,
-  MdButtonModule
+  MdButtonModule,
+  MdCardModule
 } from '@angular/material';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -15,11 +17,13 @@ import { loaderSvgResources } from '../util/svg.util';
 
 @NgModule({
   imports: [
-    HttpModule,
-    CommonModule,
     MdToolbarModule,
     MdIconModule,
-    MdButtonModule
+    MdButtonModule,
+    MdCardModule,
+  // SharedModule,
+    CommonModule,
+    HttpModule,
   ],
   declarations: [
     HeaderComponent, 
