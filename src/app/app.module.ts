@@ -7,8 +7,11 @@ import {
   MdIconModule,
   MdButtonModule,
   MdCardModule,
-  MdInputModule
+  MdInputModule,
+  MdListModule
 } from '@angular/material';
+import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 
@@ -17,6 +20,7 @@ import { AppComponent } from './app.component';
     AppComponent,
   ],
   imports: [
+    // AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     MdSidenavModule,
@@ -25,7 +29,8 @@ import { AppComponent } from './app.component';
     MdIconModule,
     MdButtonModule,
     MdCardModule,
-    MdInputModule
+    MdInputModule,
+    MdListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
