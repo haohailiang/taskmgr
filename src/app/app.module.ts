@@ -1,36 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { MdSidenavModule } from '@angular/material';
-import { 
-  MdToolbarModule,
-  MdIconModule,
-  MdButtonModule,
-  MdCardModule,
-  MdInputModule,
-  MdListModule
-} from '@angular/material';
-import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { LoginModule } from './login/login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    // AppRoutingModule,
     BrowserModule,
-    BrowserAnimationsModule,
     MdSidenavModule,
     CoreModule,
-    MdToolbarModule,
-    MdIconModule,
-    MdButtonModule,
-    MdCardModule,
-    MdInputModule,
-    MdListModule
+    LoginModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,9 @@
-import { NgModule, SkipSelf, Optional } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { MdIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-// import { SharedModule } from './../shared/shared.module';
-import { 
-  MdToolbarModule,
-  MdIconModule,
-  MdButtonModule,
-  MdCardModule
-} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './../shared/shared.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -17,13 +11,9 @@ import { loaderSvgResources } from '../util/svg.util';
 
 @NgModule({
   imports: [
-    MdToolbarModule,
-    MdIconModule,
-    MdButtonModule,
-    MdCardModule,
-  // SharedModule,
-    CommonModule,
     HttpModule,
+    BrowserAnimationsModule,
+    SharedModule
   ],
   declarations: [
     HeaderComponent, 

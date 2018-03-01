@@ -2,7 +2,7 @@ import { MdIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
 export const loaderSvgResources = (iconRegistry: MdIconRegistry, sanitizer: DomSanitizer) => {
-    const imgDir = 'assets/img';
+    const imgDir = 'assets';
     const sidebarDir = `${imgDir}/sidebar`;
     const dayDir = `${imgDir}/days`;
     const avatarDir = `${imgDir}/avatar`;

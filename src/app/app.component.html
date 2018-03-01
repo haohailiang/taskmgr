@@ -7,38 +7,7 @@
       <app-header (toggle)="sidenav.open()"></app-header>
     </header>
     <main>
-      <form>
-          <md-card>
-              <md-card-header>
-                <md-card-title>登录:</md-card-title>
-              </md-card-header>
-              <md-card-content>
-                  <md-input-container class="full-width">
-                    <input type="text" mdInput placeholder="您的email">
-                  </md-input-container>
-                  <md-input-container class="full-width">
-                      <input type="password" mdInput placeholder="您的密码">
-                    </md-input-container>  
-                  <button md-button type="button">登录</button>
-              </md-card-content>
-              <md-card-actions class="text-right">
-                <p>还没有账户?<a href="">注册</a></p>
-                <p>忘记密码?<a href="">找回</a></p>
-              </md-card-actions>
-            </md-card>
-
-            <md-card>
-              <md-card-header>
-                  <md-card-title>每日家具</md-card-title>
-                  <md-card-subtitle>副标题</md-card-subtitle>
-              </md-card-header>
-              
-              <img src="/assets/quote_fallback.jpg" class="card-icon">
-              <md-card-content>
-                标题内容
-              </md-card-content>
-            </md-card>
-      </form>
+        <router-outlet></router-outlet>
     </main>
     <footer>
       <app-footer></app-footer>
