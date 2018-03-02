@@ -10,8 +10,8 @@ import { loaderSvgResources } from './../../util/svg.util';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output()
-  toggle = new EventEmitter<void>();
+  @Output() toggle = new EventEmitter<void>();
+  @Output() toggleDarkTheme = new EventEmitter<boolean>();
 
   constructor() {
   }
@@ -21,6 +21,10 @@ export class HeaderComponent implements OnInit {
 
   openSidebar() {
     this.toggle.emit();
+  }
+
+  onChange(checked) {
+    this.toggleDarkTheme.emit(checked);
   }
 
 }
