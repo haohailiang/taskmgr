@@ -23,11 +23,11 @@ export class InviteComponent implements OnInit {
   constructor(
     @Inject(MD_DIALOG_DATA) private data,
     private dialogRef: MdDialogRef<InviteComponent>,
-    private oc: OverlayContainer
+    // private oc: OverlayContainer
   ) { }
 
   ngOnInit() {
-    this.oc.themeClass = this.data.dark? 'myapp-dark-theme': null;
+    // this.oc.themeClass = this.data.dark? 'myapp-dark-theme': null;
   }
 
   onClick() {

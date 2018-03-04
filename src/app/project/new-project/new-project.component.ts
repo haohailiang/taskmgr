@@ -7,15 +7,17 @@ import { MD_DIALOG_DATA, MdDialogRef, OverlayContainer } from '@angular/material
   styleUrls: ['./new-project.component.scss']
 })
 export class NewProjectComponent implements OnInit {
+  title = '';
 
   constructor(
     @Inject(MD_DIALOG_DATA) private data,
     private dialogRef: MdDialogRef<NewProjectComponent>,
-    private oc: OverlayContainer
+    // private oc: OverlayContainer
   ) { }
 
   ngOnInit() {
-    this.oc.themeClass = this.data.dark? 'myapp-dark-theme': null;
+    // this.oc.themeClass = this.data.dark? 'myapp-dark-theme': null;
+    this.title = this.data.title;
   }
 
   onClick() {
