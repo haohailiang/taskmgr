@@ -7,18 +7,21 @@ import {
   MdCardModule,
   MdInputModule,
   MdListModule,
-  MdGridListModule,
   MdSlideToggleModule,
+  MdGridListModule,
+  MdDialogModule,
   MdAutocompleteModule,
   MdMenuModule,
   MdCheckboxModule,
   MdTooltipModule,
-  MdRadioModule,
   MdDatepickerModule,
   MdNativeDateModule,
-  MdSelectModule
+  MdRadioModule,
+  MdSelectModule,
+  MdSidenavModule
 } from '@angular/material';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   imports: [
@@ -38,26 +41,31 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MdRadioModule,
     MdDatepickerModule,
     MdNativeDateModule,
-    MdSelectModule
+    MdSelectModule,
+    MdSidenavModule,
+    // BrowserAnimationsModule
   ],
   exports: [
     CommonModule,
-    MdToolbarModule,
-    MdIconModule,
-    MdButtonModule,
+    MdToolbarModule, 
+    MdIconModule, 
+    MdButtonModule, 
     MdCardModule,
     MdInputModule,
     MdListModule,
-    MdGridListModule,
     MdSlideToggleModule,
+    MdGridListModule,
+    MdDialogModule,
     MdAutocompleteModule,
     MdMenuModule,
     MdCheckboxModule,
     MdTooltipModule,
-    MdRadioModule,
     MdDatepickerModule,
     MdNativeDateModule,
-    MdSelectModule
+    MdRadioModule,
+    MdSelectModule,
+    MdSidenavModule,
+    // BrowserAnimationsModule
   ],
   declarations: [ConfirmDialogComponent],
   entryComponents: [
