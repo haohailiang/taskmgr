@@ -4,7 +4,7 @@ import { NewTaskComponent } from './../new-task/new-task.component';
 import { CopyTaskComponent } from '../copy-task/copy-task.component';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 import { NewTaskListComponent } from '../new-task-list/new-task-list.component';
-import { slideToRight } from '../../anims/router.anims';
+import { slideToRight } from '../../anims/router.anim';
 
 @Component({
   selector: 'app-task-home',
