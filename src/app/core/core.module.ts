@@ -28,6 +28,11 @@ import 'hammerjs';
     FooterComponent, 
     SidebarComponent,
     AppRoutingModule
+  ],
+  providers: [
+    {
+      provide:'BASE_CONFIG', useValue: 'http://localhost:4200'
+    }
   ]
 })
 export class CoreModule {
