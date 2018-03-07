@@ -11,7 +11,7 @@ import { trigger, state, animation, style} from '@angular/animations';
   ]
 })
 export class AppComponent {
-  squareState;
+  squareState: string;
   darkTheme = false;
 
   constructor(
@@ -24,5 +24,9 @@ export class AppComponent {
   switchDarkTheme(darkTheme: boolean): void {
     this.darkTheme = darkTheme;
     this.oc.themeClass = darkTheme? 'myapp-dark-theme': null;
+  }
+
+  onClick() {
+    this.squareState = this.squareState? null: 'green';
   }
 }
