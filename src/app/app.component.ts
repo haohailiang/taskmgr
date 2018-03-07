@@ -1,13 +1,18 @@
 import { Component, Inject } from '@angular/core';
 import { OverlayContainer } from '@angular/material';
-import { trigger, state, animation, style} from '@angular/animations';
+import { trigger, state, style, transition, animate} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    trigger('square', [state('green', style({'background-color': 'green'}))])
+    trigger('square', [
+      state('green', style({'background-color': 'green', 'height': '100px', 'transform': 'translateX(0)'})),
+      state('red', style({'background-color': 'red', 'height': '50px', 'transform': 'translateX(100%)'})),
+      transition('green => red', animate('5s')),
+      transition('red => green', animate('5s'))
+    ])
   ]
 })
 export class AppComponent {
@@ -27,6 +32,6 @@ export class AppComponent {
   }
 
   onClick() {
-    this.squareState = this.squareState? null: 'green';
+    this.squareState = this.squareState === 'green'? 'red': 'green';
   }
 }
