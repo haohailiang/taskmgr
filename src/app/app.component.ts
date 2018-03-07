@@ -1,12 +1,17 @@
 import { Component, Inject } from '@angular/core';
 import { OverlayContainer } from '@angular/material';
+import { trigger, state, animation, style} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('square', [state('green', style({'background-color': 'green'}))])
+  ]
 })
 export class AppComponent {
+  squareState;
   darkTheme = false;
 
   constructor(
