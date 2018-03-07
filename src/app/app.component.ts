@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { OverlayContainer } from '@angular/material';
-import { trigger, state, style, transition, animate} from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,11 @@ import { trigger, state, style, transition, animate} from '@angular/animations';
       state('green', style({'background-color': 'green', 'height': '100px', 'transform': 'translateX(0)'})),
       state('red', style({'background-color': 'red', 'height': '50px', 'transform': 'translateX(100%)'})),
       transition('green => red', animate('5s')),
-      transition('red => green', animate('5s'))
+      transition('red => green', animate('5s', keyframes([
+        style({'background-color': 'red'}),
+        style({'background-color': 'green'}),
+        style({'background-color': 'blue'})
+      ])))
     ])
   ]
 })
