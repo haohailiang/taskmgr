@@ -87,10 +87,6 @@ export class TaskHomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  openNewProjectDialog() {
-
-  }
-
   launchNewTaskDialog() {
     this.dialog.open(NewTaskComponent, {data: {title:'新建任务'}});
   }
@@ -106,6 +102,16 @@ export class TaskHomeComponent implements OnInit {
   launchConfirmDialog() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {data: {title:'删除任务列表', content: '你确定删除该项目列表吗?'}});
     dialogRef.afterClosed().subscribe(result => console.log(result));
+  }
+
+  launchEditListDialog() {
+    const dialogRef = this.dialog.open(NewTaskListComponent, {data: {title:'更改列表名称'}});
+    dialogRef.afterClosed().subscribe(result => console.log('更改的列表名称为:' + result));
+  }
+
+  launchNewListDialog() {
+    const dialogRef = this.dialog.open(NewTaskListComponent, {data: {title:'新建列表'}});
+    dialogRef.afterClosed().subscribe(result => console.log('新建的列表名称为:' + result));
   }
 
 }
