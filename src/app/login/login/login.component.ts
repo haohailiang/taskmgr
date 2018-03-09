@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +10,12 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      email: new FormControl('wang@163.com', Validators.compose([Validators.required, Validators.email])),
-      password: new FormControl('', Validators.required)
+    this.form = this.fb.group({
+      email: ['wang@163.com', Validators.compose([Validators.required, Validators.email, this.validate])],
+      password: ['', Validators.required]
     });
   }
 
@@ -23,6 +23,21 @@ export class LoginComponent implements OnInit {
     ev.preventDefault();
     console.log(JSON.stringify(value));
     console.log(JSON.stringify(valid));
+  }
+
+  validate(c: FormControl): {[key: string]: any} {
+    if(!c.value) {
+      return null;
+    }
+
+    const pattern = /^wang+/;
+    if(pattern.test(c.value)) {
+      return null;
+    }
+
+    return {
+      emailNotValid: '邮箱地址必须以wang开头'
+    }
   }
 
 }
