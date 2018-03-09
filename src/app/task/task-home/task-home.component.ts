@@ -16,8 +16,8 @@ import { slideToRight } from '../../anims/router.anim';
 export class TaskHomeComponent implements OnInit {
   @HostBinding('@routeAnim') state;
   
-  lists = [];
-  items = [
+  // lists = [];
+  lists = [
     {
       id: 1,
       name: '待办',
@@ -93,7 +93,7 @@ export class TaskHomeComponent implements OnInit {
   }
 
   launchCopyTaskDialog() {
-    this.dialog.open(CopyTaskComponent, {data: {lists: this.items}});
+    this.dialog.open(CopyTaskComponent, {data: {lists: this.lists}});
   }
 
   launchUpdateTaskDialog(task) {
@@ -113,6 +113,20 @@ export class TaskHomeComponent implements OnInit {
   launchNewListDialog() {
     const dialogRef = this.dialog.open(NewTaskListComponent, {data: {title:'新建列表'}});
     dialogRef.afterClosed().subscribe(result => console.log('新建的列表名称为:' + result));
+  }
+
+  handleMove(srcData, list) {
+    console.log(srcData);
+    switch (srcData.tag) {
+      case 'task-item':
+        console.log('handling item');
+        break;
+      case 'task-list':
+        console.log('handling list');
+        break;
+      default:
+        break;
+    }
   }
 
 }

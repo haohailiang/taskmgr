@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { loaderSvgResources } from '../util/svg.util';
 import 'hammerjs';
+import 'rxjs/add/operator/take';
 
 @NgModule({
   imports: [
