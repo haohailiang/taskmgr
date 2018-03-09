@@ -21,6 +21,7 @@ import {
   MdSidenavModule
 } from '@angular/material';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { DirectiveModule } from '../directive/directive.module';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
@@ -43,6 +44,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MdNativeDateModule,
     MdSelectModule,
     MdSidenavModule,
+    DirectiveModule,
     // BrowserAnimationsModule
   ],
   exports: [
@@ -65,11 +67,10 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MdRadioModule,
     MdSelectModule,
     MdSidenavModule,
+    DirectiveModule,
     // BrowserAnimationsModule
   ],
   declarations: [ConfirmDialogComponent],
-  entryComponents: [
-    ConfirmDialogComponent
-  ]
+  entryComponents: [ConfirmDialogComponent]
 })
 export class SharedModule { }

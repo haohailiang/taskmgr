@@ -13,7 +13,7 @@ export class AppComponent {
     private oc: OverlayContainer,
     @Inject('BASE_CONFIG') config
   ) {
-    console.log('config: ' + config);
+    // console.log('config: ' + config);
   }
 
   switchDarkTheme(darkTheme: boolean): void {
