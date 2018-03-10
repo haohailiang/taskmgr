@@ -23,6 +23,7 @@ import {
 } from '@angular/material';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DirectiveModule } from '../directive/directive.module';
+import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
@@ -48,6 +49,7 @@ import { DirectiveModule } from '../directive/directive.module';
     MdSelectModule,
     MdSidenavModule,
     DirectiveModule,
+    // ImageListSelectComponent,
     // BrowserAnimationsModule
   ],
   exports: [
@@ -73,9 +75,13 @@ import { DirectiveModule } from '../directive/directive.module';
     MdSelectModule,
     MdSidenavModule,
     DirectiveModule,
+    ImageListSelectComponent,
     // BrowserAnimationsModule
   ],
-  declarations: [ConfirmDialogComponent],
+  declarations: [
+    ConfirmDialogComponent, 
+    ImageListSelectComponent
+  ],
   entryComponents: [ConfirmDialogComponent]
 })
 export class SharedModule { }
