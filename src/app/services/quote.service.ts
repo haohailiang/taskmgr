@@ -10,6 +10,8 @@ export class QuoteService {
     getQuote(): Observable<Quote> {
         const uri = `${this.config.uri}/quotes/${Math.floor(Math.random() * 10).toFixed(0)}`;
         // const uri = `${this.config.uri}/assets/quotes/${Math.floor(Math.random() * 10)}.jpg`;
-        return this.http.get(uri).map(res => res.json() as Quote);
+        return this.http.get(uri)
+                    .do(item => console.log(uri))
+                    .map(res => res.json() as Quote);
     }
 }

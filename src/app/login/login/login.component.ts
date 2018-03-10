@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { QuoteService } from '../../services/quote.service';
 import { Quote } from '../../domain/quote.model';
@@ -17,8 +17,11 @@ export class LoginComponent implements OnInit {
     en: 'good good study, day day up !',
     pic: '/assets/quote_fallback.jpg'
   };
-  constructor(private fb: FormBuilder, private quoteService$: QuoteService) { 
-    this.quoteService$.getQuote().subscribe(q => this.quote = q);
+  constructor(private fb: FormBuilder, private quoteService$: QuoteService, private cd: ChangeDetectorRef) { 
+    this.quoteService$.getQuote().subscribe(q => {
+      this.quote = q;
+      this.cd.markForCheck();
+    });
   }
 
   ngOnInit() {
