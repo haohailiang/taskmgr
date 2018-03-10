@@ -35,7 +35,9 @@ import 'rxjs/add/operator/take';
   ],
   providers: [
     {
-      provide:'BASE_CONFIG', useValue: 'http://localhost:4200'
+      provide:'BASE_CONFIG', useValue: {
+        uri: 'http://localhost:4200'
+      }
     }
   ]
 })

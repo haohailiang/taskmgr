@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { ProjectModule } from './project/project.module';
 import { TaskModule } from './task/task.module';
 import { SharedModule } from './shared/shared.module';
+import { QuoteService } from './services/quote.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [QuoteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

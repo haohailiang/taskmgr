@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import { QuoteService } from '../../services/quote.service';
+import { Quote } from '../../domain/quote.model';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,14 @@ import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  quote: Quote = {
+    cn: '好好学习, 天天向上',
+    en: 'good good study, day day up !',
+    pic: '/assets/quote_fallback.jpg'
+  };
+  constructor(private fb: FormBuilder, private quoteService$: QuoteService) { 
+    this.quoteService$.getQuote().subscribe(q => this.quote = q);
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
