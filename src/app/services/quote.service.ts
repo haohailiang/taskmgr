@@ -11,7 +11,7 @@ export class QuoteService {
         const uri = `${this.config.uri}/quotes/${Math.floor(Math.random() * 10).toFixed(0)}`;
         // const uri = `${this.config.uri}/assets/quotes/${Math.floor(Math.random() * 10)}.jpg`;
         return this.http.get(uri)
-                    .do(item => console.log(uri))
+                    .debug('quote:')
                     .map(res => res.json() as Quote);
     }
 }
