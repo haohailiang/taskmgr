@@ -24,6 +24,9 @@ import {
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DirectiveModule } from '../directive/directive.module';
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
+import { AgeInputComponent } from './age-input/age-input.component';
+import { IdentityInputComponent } from './identity-input/identity-input.component';
+import { AreaListComponent } from './area-list/area-list.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
@@ -76,12 +79,15 @@ import { ImageListSelectComponent } from './image-list-select/image-list-select.
     MdSidenavModule,
     DirectiveModule,
     ImageListSelectComponent,
+    AgeInputComponent,
+    // ChipsListComponent
     // BrowserAnimationsModule
   ],
+  entryComponents: [ConfirmDialogComponent],
   declarations: [
     ConfirmDialogComponent, 
-    ImageListSelectComponent
-  ],
-  entryComponents: [ConfirmDialogComponent]
+    ImageListSelectComponent, 
+    AgeInputComponent, IdentityInputComponent, AreaListComponent
+  ]
 })
 export class SharedModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostBinding, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { cardAnim } from '../../anims/card.anim';
+import { Project } from '../../domain';
 
 @Component({
   selector: 'app-project-item',
@@ -11,7 +12,7 @@ import { cardAnim } from '../../anims/card.anim';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectItemComponent implements OnInit {
-  @Input() item;
+  @Input() item: Project;
   @Output() onInvite = new EventEmitter<void>();
   @Output() onEdit = new EventEmitter<void>();
   @Output() onDel = new EventEmitter<void>();

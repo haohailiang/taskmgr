@@ -29,7 +29,7 @@ export class ImageListSelectComponent implements ControlValueAccessor {
   
   selected: string;
   constructor() { }
-  private propagateChange = (_: any) => {}
+  private propagateChange = (_: any) => {};
 
   onChange(index: number) {
     this.selected = this.items[index];

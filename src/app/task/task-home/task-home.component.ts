@@ -27,15 +27,15 @@ export class TaskHomeComponent implements OnInit {
         {
           id: 1,
           desc: '任务一: 去星巴克买杯咖啡',
-          priority: 1,
           completed: true,
+          priority: 3,
           owner: {
             id: 1,
             name: '张三',
             avatar: 'avatars:svg-11'
           },
           dueDate: new Date(),
-          reminder: true
+          reminder: new Date()
         },
         {
           id: 1,
@@ -48,7 +48,7 @@ export class TaskHomeComponent implements OnInit {
             avatar: 'avatars:svg-12'
           },
           dueDate: new Date(),
-          reminder: false
+          reminder: new Date()
         }
       ]
     },
@@ -67,7 +67,7 @@ export class TaskHomeComponent implements OnInit {
             avatar: 'avatars:svg-13'
           },
           dueDate: new Date(),
-          reminder: true
+          reminder: new Date()
         },{
           id: 2,
           desc: '任务四：制定项目计划',
@@ -78,7 +78,7 @@ export class TaskHomeComponent implements OnInit {
             avatar: 'avatars:svg-13'
           },
           dueDate: new Date(),
-          reminder: false
+          reminder: new Date()
         }
       ]
     }
