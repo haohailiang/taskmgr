@@ -28,6 +28,7 @@ export class ImageListSelectComponent implements ControlValueAccessor {
   @Input() itemWidth = '80px';
   
   selected: string;
+  
   constructor() { }
   private propagateChange = (_: any) => {};
 

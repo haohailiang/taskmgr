@@ -22,12 +22,12 @@
   <md-card>
     <md-card-header>
         <md-card-title>每日家具</md-card-title>
-        <md-card-subtitle>{{ quote.cn }}</md-card-subtitle>
+        <md-card-subtitle>{{ (quote$ | async).cn }}</md-card-subtitle>
     </md-card-header>
     
-    <img [src]="quote.pic" class="card-icon" md-card-image>
+    <img [src]="(quote$ | async).pic" class="card-icon" md-card-image>
     <md-card-content>
-      {{ quote.en }}
+      {{ (quote$ | async).en }}
     </md-card-content>
   </md-card>  
 </form>

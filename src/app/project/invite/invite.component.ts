@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MD_DIALOG_DATA, MdDialogRef, OverlayContainer } from '@angular/material';
+import { User } from '../../domain';
 
 @Component({
   selector: 'app-invite',
@@ -8,6 +9,8 @@ import { MD_DIALOG_DATA, MdDialogRef, OverlayContainer } from '@angular/material
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InviteComponent implements OnInit {
+  members: Array<User> = [];
+
   items = [
     {
       id:1,
@@ -29,6 +32,7 @@ export class InviteComponent implements OnInit {
 
   ngOnInit() {
     // this.oc.themeClass = this.data.dark? 'myapp-dark-theme': null;
+    this.members = [...this.data.members];
   }
 
   onClick() {
@@ -37,6 +41,14 @@ export class InviteComponent implements OnInit {
 
   displayUser(user: {id: number, name: string}) {
     return user? user.name: '';
+  }
+
+  onSubmit({value, valid}, ev: Event) {
+    ev.preventDefault();
+    if(!valid) {
+      return;
+    }
+    this.dialogRef.close(this.members);
   }
 
 }

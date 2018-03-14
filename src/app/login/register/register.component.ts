@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,7 @@ export class RegisterComponent implements OnInit {
   
   form: FormGroup;
   items: Array<string>;
+  sub: Subscription;
   private readonly avatarName = 'avatars';
   constructor(private fb: FormBuilder) { }
 
@@ -23,7 +25,8 @@ export class RegisterComponent implements OnInit {
       password: [],
       repeat: [],
       avatar: [img],
-      dateOfBirth: ['1990-01-01']
+      dateOfBirth: ['1990-01-01'],
+      address: []
     });
   }
 

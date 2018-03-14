@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-identity-input',
@@ -42,6 +43,7 @@ export class IdentityInputComponent implements OnInit, OnDestroy, ControlValueAc
   private _idType = new Subject<IdentityType>();
   private _idNo = new Subject<string>();
   private propagateChange = (_: any) => {};
+  private sub: Subscription;
 
   constructor() { }
 
@@ -51,7 +53,8 @@ export class IdentityInputComponent implements OnInit, OnDestroy, ControlValueAc
         identityType: _type,
         identityNo: _no
       }
-    })
+    });
+    this.sub = val$.subscribe(id => this.propagateChange(id));
   }
   
   writeValue(obj: any): void {
@@ -60,6 +63,57 @@ export class IdentityInputComponent implements OnInit, OnDestroy, ControlValueAc
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
+
+  validate(c: FormControl): {[key: string]: any} {
+    const val = c.value;
+    if(!val) {
+      return null;
+    }
+    switch(val.identityType) {
+      case IdentityType.IdCard: 
+        return this.validateIdCard(c);
+      case IdentityType.Passport: 
+        return this.validatePassport(c);
+      case IdentityType.Military:
+        return this.validateMilitary(c);
+      case IdentityType.Insurance:
+      default:
+        return null;
+    }
+  }
+  validateIdCard(c: FormControl): {[key: string]: any} {
+    const val = c.value;
+    if(val.length !== 18) {
+      return {'idInvalid': true};
+    }
+
+    const pattern = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}[x0-9]$/;
+    return pattern.test(val)? null: {'idNotValid': true};
+  }
+
+  private validatePassport(c: FormControl): {[key: string]: any} {
+    const value = c.value.identityNo;
+    if (value.length !== 9) {
+      return {idNotValid: true};
+    }
+    const pattern = /^[GgEe]\d{8}$/;
+    let result = false;
+    if (pattern.test(value)) {
+      result = true;
+    }
+    return result ? null : {idNotValid:  true};
+  }
+
+  private validateMilitary(c: FormControl): {[key: string]: any} {
+    const value = c.value.identityNo;
+    const pattern = /[\u4e00-\u9fa5](字第)(\d{4,8})(号?)$/;
+    let result = false;
+    if (pattern.test(value)) {
+      result = true;
+    }
+    return result ? null : {idNotValid:  true};
+  }
+
   registerOnTouched(fn: any): void {
     throw new Error("Method not implemented.");
   }
@@ -68,7 +122,9 @@ export class IdentityInputComponent implements OnInit, OnDestroy, ControlValueAc
   }
 
   ngOnDestroy(): void {
-    throw new Error("Method not implemented.");
+    if(this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
   onIdTypeChange(idType: IdentityType) {

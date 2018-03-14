@@ -63,30 +63,54 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   }
 
   openNewProjectDialog() {
-    const selectedImg = `/assets/img/covers/${Math.floor(Math.random() * 40)}_tn.jpg`;
+    const selectedImg = `/assets/covers/${Math.floor(Math.random() * 40)}_tn.jpg`;
     const dialogRef = this.dialog.open(
       NewProjectComponent, 
       {data: {thumbnails: this.getThumbnails(), img: selectedImg}}
       // {data: {title: '新增项目'}}
     );
-    dialogRef.afterClosed().subscribe(project => {
-      this.service$.add(project);
+    dialogRef.afterClosed()
+             .filter(n => n)
+             .map(val => ({...val, coverImg: this.buildImgSrc(val.coverImg)}))
+             .switchMap(v => this.service$.add(v))
+             .subscribe(project => {
+               this.projects = [...this.projects, project];
+               this.cd.markForCheck();
+             });
+      //        .subscribe(project => {
+      // this.service$.add(project);
       // this.projects = [...this.projects, 
       //   { "id": "3", "name": "一个新项目", "desc": "这是一个新项目", "coverImg": "assets/covers/8.jpg" },
       //   { "id": "4", "name": "又一个新项目", "desc": "这是又一个新项目", "coverImg": "assets/covers/9.jpg" }
       // ];
-      this.cd.markForCheck();
-    });
+      // this.cd.markForCheck();
+    // });
   }
 
   launchInviteDialog() {
     // const dialogRef = this.dialog.open(InviteComponent, {data: {'dark': true}});
-    const dialogRef = this.dialog.open(InviteComponent);
+    const dialogRef = this.dialog.open(InviteComponent, {data: {members: []}});
     dialogRef.afterClosed().subscribe(result => console.log(result));
   }
 
-  launchUpdateDialog() {
-    this.dialog.open(NewProjectComponent, {data: {title: '编辑项目'}});
+  launchUpdateDialog(project: Project) {
+    // this.dialog.open(NewProjectComponent, {data: {title: '编辑项目'}});
+    const selectedImg = `/assets/covers/${Math.floor(Math.random() * 40)}_tn.jpg`;
+    const dialogRef = this.dialog.open(
+      NewProjectComponent, 
+      {data: {thumbnails: this.getThumbnails(), project: project}}
+      // {data: {title: '新增项目'}}
+    );
+    dialogRef.afterClosed()
+             .take(1)
+             .filter(n => n)
+             .map(val => ({...val, coverImg: this.buildImgSrc(val.coverImg)}))
+             .switchMap(v => this.service$.update(v))
+             .subscribe(project => {
+               const index = this.projects.map(p => p.id).indexOf(project.id);
+               this.projects = [...this.projects.slice(0, index), project, ...this.projects.slice(index + 1)];
+               this.cd.markForCheck();
+             });
   }
 
   launchConfirmDialog(project) {
@@ -95,8 +119,9 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       .take(1)
       .filter(n => n)
       .switchMap(_ => this.service$.del(project))
-      .subscribe(prj => {
-        this.projects = this.projects.filter( p => p.id !== prj.id);
+      .subscribe(result => {
+        console.log(result);
+        this.projects = this.projects.filter( p => p.id !== project.id);
         this.cd.markForCheck();
     });
   }
@@ -104,6 +129,10 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   private getThumbnails()  {
     return _.range(0, 40)
             .map(i => `/assets/covers/${i}_tn.jpg`)
+  }
+
+  private buildImgSrc(img: string): string {
+    return img.indexOf('_') > -1? img.split('_')[0] + '.jpg': img;
   }
   
 }

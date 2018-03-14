@@ -19,7 +19,8 @@ import {
   MdNativeDateModule,
   MdRadioModule,
   MdSelectModule,
-  MdSidenavModule
+  MdSidenavModule,
+  MdChipsModule
 } from '@angular/material';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DirectiveModule } from '../directive/directive.module';
@@ -27,6 +28,7 @@ import { ImageListSelectComponent } from './image-list-select/image-list-select.
 import { AgeInputComponent } from './age-input/age-input.component';
 import { IdentityInputComponent } from './identity-input/identity-input.component';
 import { AreaListComponent } from './area-list/area-list.component';
+import { ChipsListComponent } from './chips-list/chips-list.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
@@ -51,6 +53,7 @@ import { AreaListComponent } from './area-list/area-list.component';
     MdNativeDateModule,
     MdSelectModule,
     MdSidenavModule,
+    MdChipsModule,
     DirectiveModule,
     // ImageListSelectComponent,
     // BrowserAnimationsModule
@@ -77,17 +80,23 @@ import { AreaListComponent } from './area-list/area-list.component';
     MdRadioModule,
     MdSelectModule,
     MdSidenavModule,
+    MdChipsModule,
     DirectiveModule,
     ImageListSelectComponent,
     AgeInputComponent,
-    // ChipsListComponent
+    ChipsListComponent
     // BrowserAnimationsModule
   ],
-  entryComponents: [ConfirmDialogComponent],
+  entryComponents: [
+    ConfirmDialogComponent
+  ],
   declarations: [
     ConfirmDialogComponent, 
     ImageListSelectComponent, 
-    AgeInputComponent, IdentityInputComponent, AreaListComponent
+    AgeInputComponent, 
+    IdentityInputComponent, 
+    AreaListComponent, 
+    ChipsListComponent
   ]
 })
 export class SharedModule { }

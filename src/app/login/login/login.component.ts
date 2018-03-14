@@ -2,7 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { QuoteService } from '../../services/quote.service';
 import { Quote } from '../../domain/quote.model';
-
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../reducers';
+import { QUOTE_SUCCESS } from '../../actions/quote.action';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,14 +14,22 @@ import { Quote } from '../../domain/quote.model';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
-  quote: Quote = {
-    cn: '好好学习, 天天向上',
-    en: 'good good study, day day up !',
-    pic: '/assets/quote_fallback.jpg'
-  };
-  constructor(private fb: FormBuilder, private quoteService$: QuoteService, private cd: ChangeDetectorRef) { 
+  // quote: Quote = {
+  //   cn: '好好学习, 天天向上',
+  //   en: 'good good study, day day up !',
+  //   pic: '/assets/quote_fallback.jpg'
+  // };
+  quote$: Observable<Quote>;
+  constructor(
+    private fb: FormBuilder, 
+    private quoteService$: QuoteService, 
+    private cd: ChangeDetectorRef,
+    private store$: Store<fromRoot.State>
+  ) { 
     this.quoteService$.getQuote().subscribe(q => {
-      this.quote = q;
+      // this.quote = q;
+      this.quote$ = this.store$.select(state => state.quote.quote);
+      this.store$.dispatch({type: QUOTE_SUCCESS, payload: q});
       this.cd.markForCheck();
     });
   }

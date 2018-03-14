@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './../shared/shared.module';
 import { AppRoutingModule } from './../app-routing.module';
 import { ServicesModule } from '../services/services.module';
+import { AppStoreModule } from '../reducers';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -42,6 +43,7 @@ import './../util/debug.util';
     SharedModule,
     AppRoutingModule,
     ServicesModule.forRoot(),
+    AppStoreModule,
     BrowserAnimationsModule
   ],
   declarations: [

@@ -12,7 +12,7 @@ export class ProjectService {
     constructor(private http: Http, @Inject('BASE_CONFIG') private config) {}
 
     // POST
-    add(project: Project) {
+    add(project: Project): Observable<Project> {
         project.id = null;
         const uri = `${this.config.uri}/${this.domain}`;
         return this.http
